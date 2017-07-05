@@ -47,9 +47,9 @@ class LearningAgent(Agent):
             self.alpha = 0.0
         else:
             #self.epsilon -= 0.05
-            #self.epsilon = np.clip(math.pow(self.alpha,self.t), 0, 1)
-            self.epsilon = 1/math.pow(self.t,2)
-            self.epsilon = np.clip(math.cos(self.alpha*self.t), 0, 1)
+            self.epsilon = np.clip(math.pow(self.alpha,self.t), 0, 1)
+            #self.epsilon = 1/math.pow(self.t,2)
+            #self.epsilon = math.fabs(math.cos(self.alpha*self.t))
 
         
 
@@ -60,7 +60,7 @@ class LearningAgent(Agent):
             environment. The next waypoint, the intersection inputs, and the deadline 
             are all features available to the agent. """
 
-        # Collect data about the environment
+        # Collect data about the environment2
         waypoint = self.planner.next_waypoint() # The next waypoint 
         inputs = self.env.sense(self)           # Visual input - intersection light and traffic
         deadline = self.env.get_deadline(self)  # Remaining deadline
@@ -193,7 +193,7 @@ def run():
     #   learning   - set to True to force the driving agent to use Q-learning
     #    * epsilon - continuous value for the exploration factor, default is 1
     #    * alpha   - continuous value for the learning rate, default is 0.5
-    agent = env.create_agent(LearningAgent,learning=True,alpha=0.01)
+    agent = env.create_agent(LearningAgent,learning=True,alpha=0.9)
     
     ##############
     # Follow the driving agent
@@ -215,7 +215,7 @@ def run():
     # Flags:
     #   tolerance  - epsilon tolerance before beginning testing, default is 0.05 
     #   n_test     - discrete number of testing trials to perform, default is 0
-    sim.run(n_test=15,tolerance=0.001)
+    sim.run(n_test=15,tolerance=0.00001)
 
 
 if __name__ == '__main__':
