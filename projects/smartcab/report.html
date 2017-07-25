@@ -41147,6 +41147,13 @@ LDMzMzMzszpxgmVmZmZmZlYn/w9/5l82MizUCAAAAABJRU5ErkJggg==
  -- None : 0.00
  -- right : 1.81
  -- left : 0.00</code></pre>
+<p>This policy is also not correct. There cab should be able to turn right based on US driving rules, and also knowing that the destination is in the right. 0.0 value is most probably there due to teh same reason as the previous policy, the learner was not able to reach this state, and explore the right option.</p>
+
+<pre><code>right-red-right-right
+-- forward : 0.00
+-- None : 1.38
+-- right : 0.00
+-- left : -30.37</code></pre>
 <p>Apparently I was lucky getting the safety and reliability results ;)</p>
 
 </div>
