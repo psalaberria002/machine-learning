@@ -41000,13 +41000,13 @@ LDMzMzMzszpxgmVmZmZmZlYn/w9/5l82MizUCAAAAABJRU5ErkJggg==
 <p>I defined state with the following variables: waypoint, light, left, oncoming.</p>
 <p>An ideal policy for the learner should at least have the following features:</p>
 <ul>
-<li>When light is red always stop</li>
+<li>When light is red always stop. There is an exception tho: the agent can turn right on a red light if there is no traffic coming from the left.</li>
 <li>When light is green and there are no cars around, do anything but stop. The highest reward would happen when the car goes in the same direction as the destination.</li>
 <li>When the lights are green, and there is an oncoming car going forward, we can't turn left.</li>
 </ul>
 <p>There are too many states to analyize. I will chose some of the most relevant cases in order to answer the previous points.</p>
 <ul>
-<li>When light is red always stop</li>
+<li>When light is red always stop. There is an exception tho: the agent can turn right on a red light if there is no traffic coming from the left.</li>
 </ul>
 
 <pre><code>forward-red-None-None
@@ -41140,14 +41140,14 @@ LDMzMzMzszpxgmVmZmZmZlYn/w9/5l82MizUCAAAAABJRU5ErkJggg==
 <pre><code>In most of teh cases turning left has the highest penalty. We see some cases where left is set to zero. This is because the learner could not reach those specific state-actions.
 
 </code></pre>
-<p>The policy can still be improved with extra learning. For example, the following action will generate a major accident, and the policy was not able to learn the right actions correctly:</p>
+<p>The policy can still be improved with extra learning. However, even tough in the following case it hasn't learnt that turning to the left is a very bad action, it learnt that going to the right is a good option. This will help the car to avoid a major accident.</p>
 
 <pre><code>right-green-left-forward
  -- forward : 0.79
  -- None : 0.00
  -- right : 1.81
  -- left : 0.00</code></pre>
-<p>This policy is also not correct. There cab should be able to turn right based on US driving rules, and also knowing that the destination is in the right. 0.0 value is most probably there due to teh same reason as the previous policy, the learner was not able to reach this state, and explore the right option.</p>
+<p>This policy in the other hand is not correct. The cab should be able to turn right based on US driving rules, and also knowing that the destination is in the right. 0.0 value is most probably there due to teh same reason as the previous policy, the learner was not able to reach this state, and explore the right option.</p>
 
 <pre><code>right-red-right-right
 -- forward : 0.00
