@@ -3,10 +3,11 @@
 ## Content
 
 ```
-   proposal.pdf
-   project.pdf
-   inputs
-   laliga_predictions.ipynb
+   proposal.pdf: Proposal for the project.
+   project.pdf: Report of the final project.
+   inputs: Folder including input datasource.
+   laliga_predictions.ipynb: iPython notebook which includes all the code implementation.
+   ipython_notebook_report.html: Printed version of the notebook.
 ```
 
 ## Running Jupyter notebook (development and execution)
